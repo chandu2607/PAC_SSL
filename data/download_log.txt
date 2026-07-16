@@ -1,0 +1,123 @@
+[2026-07-15 12:48:25] === CHB-MIT Download Started ===
+[2026-07-15 12:48:25] Total patients to download: 23
+[2026-07-15 12:48:25] Total .edf files (excl chb12): 662
+[2026-07-15 12:48:25] --- Starting chb01 (42 .edf files + summary) ---
+[2026-07-15 12:51:20] === CHB-MIT Fast Parallel Download ===
+[2026-07-15 12:51:20] Total files in manifest: 685
+[2026-07-15 12:51:20] Already downloaded (skipped): 2
+[2026-07-15 12:51:20] Files to download: 683
+[2026-07-15 12:51:20] Parallel workers: 8
+[2026-07-15 13:08:41] === CHB-MIT S3 Download Started ===
+[2026-07-15 13:08:41] Source: s3://physionet-open/chbmit/1.0.0/
+[2026-07-15 13:08:41] Destination: C:\Users\chand\OneDrive\Desktop\PAC\data\chb-mit
+[2026-07-15 13:08:41] Parallel workers: 12
+[2026-07-15 13:08:41] Listing files on S3...
+[2026-07-15 13:08:44] Total objects on S3: 857
+[2026-07-15 13:08:44] Files to download: 814 (41.45 GB)
+[2026-07-15 13:08:44] Already downloaded (skipped): 5
+[2026-07-15 13:08:44] Skipped chb12 files: 38
+[2026-07-15 13:09:15]   Progress: 11/814 (1.4%) | 0.32/41.45 GB | 10.6 MB/s | ETA: 67 min | Current: chb01
+[2026-07-15 13:09:22]   Progress: 20/814 (2.5%) | 0.55/41.45 GB | 14.9 MB/s | ETA: 47 min | Current: chb01
+[2026-07-15 13:09:53]   Progress: 35/814 (4.3%) | 1.02/41.45 GB | 15.3 MB/s | ETA: 45 min | Current: chb01
+[2026-07-15 13:10:06]   Progress: 40/814 (4.9%) | 1.21/41.45 GB | 15.1 MB/s | ETA: 45 min | Current: chb01
+[2026-07-15 13:10:34]   Progress: 60/814 (7.4%) | 1.92/41.45 GB | 17.9 MB/s | ETA: 38 min | Current: chb02
+[2026-07-15 13:11:05]   Progress: 79/814 (9.7%) | 2.56/41.45 GB | 18.7 MB/s | ETA: 36 min | Current: chb02
+[2026-07-15 13:11:05]   Progress: 80/814 (9.8%) | 2.60/41.45 GB | 18.9 MB/s | ETA: 35 min | Current: chb02
+[2026-07-15 13:11:40]   Progress: 100/814 (12.3%) | 3.19/41.45 GB | 18.6 MB/s | ETA: 35 min | Current: chb03
+[2026-07-15 13:12:11]   Progress: 120/814 (14.7%) | 3.98/41.45 GB | 19.8 MB/s | ETA: 32 min | Current: chb03
+[2026-07-15 13:12:46]   Progress: 140/814 (17.2%) | 4.65/41.45 GB | 19.7 MB/s | ETA: 32 min | Current: chb04
+[2026-07-15 13:13:19]   Progress: 152/814 (18.7%) | 6.35/41.45 GB | 23.7 MB/s | ETA: 25 min | Current: chb04
+[2026-07-15 13:13:43]   Progress: 160/814 (19.7%) | 7.50/41.45 GB | 25.7 MB/s | ETA: 23 min | Current: chb04
+[2026-07-15 13:14:17]   Progress: 169/814 (20.8%) | 8.94/41.45 GB | 27.5 MB/s | ETA: 20 min | Current: chb04
+[2026-07-15 13:14:39]   Progress: 180/814 (22.1%) | 10.32/41.45 GB | 29.8 MB/s | ETA: 18 min | Current: chb05
+[2026-07-15 13:15:12]   Progress: 197/814 (24.2%) | 11.28/41.45 GB | 29.8 MB/s | ETA: 17 min | Current: chb05
+[2026-07-15 13:15:13]   Progress: 200/814 (24.6%) | 11.40/41.45 GB | 30.1 MB/s | ETA: 17 min | Current: chb05
+[2026-07-15 13:15:43]   Progress: 218/814 (26.8%) | 12.07/41.45 GB | 29.5 MB/s | ETA: 17 min | Current: chb05
+[2026-07-15 13:15:44]   Progress: 220/814 (27.0%) | 12.15/41.45 GB | 29.6 MB/s | ETA: 17 min | Current: chb05
+[2026-07-15 13:16:21]   Progress: 233/814 (28.6%) | 12.58/41.45 GB | 28.2 MB/s | ETA: 17 min | Current: chb06
+[2026-07-15 13:16:44]   Progress: 240/814 (29.5%) | 13.52/41.45 GB | 28.9 MB/s | ETA: 17 min | Current: chb06
+[2026-07-15 13:17:14]   Progress: 253/814 (31.1%) | 14.97/41.45 GB | 30.1 MB/s | ETA: 15 min | Current: chb06
+[2026-07-15 13:17:34]   Progress: 260/814 (31.9%) | 15.59/41.45 GB | 30.1 MB/s | ETA: 15 min | Current: chb07
+[2026-07-15 13:18:04]   Progress: 275/814 (33.8%) | 16.94/41.45 GB | 31.0 MB/s | ETA: 13 min | Current: chb08
+[2026-07-15 13:18:11]   Progress: 280/814 (34.4%) | 17.31/41.45 GB | 31.3 MB/s | ETA: 13 min | Current: chb08
+[2026-07-15 13:18:37]   Progress: 300/814 (36.9%) | 18.34/41.45 GB | 31.7 MB/s | ETA: 12 min | Current: chb09
+[2026-07-15 13:19:09]   Progress: 308/814 (37.8%) | 18.92/41.45 GB | 31.0 MB/s | ETA: 12 min | Current: chb09
+[2026-07-15 13:19:38]   Progress: 320/814 (39.3%) | 20.56/41.45 GB | 32.2 MB/s | ETA: 11 min | Current: chb09
+[2026-07-15 13:20:09]   Progress: 332/814 (40.8%) | 21.69/41.45 GB | 32.4 MB/s | ETA: 10 min | Current: chb10
+[2026-07-15 13:20:21]   Progress: 340/814 (41.8%) | 22.16/41.45 GB | 32.6 MB/s | ETA: 10 min | Current: chb10
+[2026-07-15 13:20:50]   Progress: 360/814 (44.2%) | 23.27/41.45 GB | 32.8 MB/s | ETA: 9 min | Current: chb10
+[2026-07-15 13:21:31]   Progress: 375/814 (46.1%) | 24.03/41.45 GB | 32.1 MB/s | ETA: 9 min | Current: chb11
+[2026-07-15 13:21:41]   Progress: 380/814 (46.7%) | 24.27/41.45 GB | 32.0 MB/s | ETA: 9 min | Current: chb11
+[2026-07-15 13:22:13]   Progress: 400/814 (49.1%) | 25.02/41.45 GB | 31.7 MB/s | ETA: 9 min | Current: chb13
+[2026-07-15 13:22:44]   Progress: 420/814 (51.6%) | 25.66/41.45 GB | 31.3 MB/s | ETA: 9 min | Current: chb13
+[2026-07-15 13:23:12]   Progress: 440/814 (54.1%) | 26.10/41.45 GB | 30.8 MB/s | ETA: 9 min | Current: chb14
+[2026-07-15 13:23:43]   Progress: 456/814 (56.0%) | 26.78/41.45 GB | 30.5 MB/s | ETA: 8 min | Current: chb14
+[2026-07-15 13:23:59]   Progress: 460/814 (56.5%) | 26.92/41.45 GB | 30.1 MB/s | ETA: 8 min | Current: chb14
+[2026-07-15 13:24:30]   Progress: 476/814 (58.5%) | 27.54/41.45 GB | 29.8 MB/s | ETA: 8 min | Current: chb14
+[2026-07-15 13:24:50]   Progress: 480/814 (59.0%) | 27.79/41.45 GB | 29.5 MB/s | ETA: 8 min | Current: chb15
+[2026-07-15 13:25:24]   Progress: 499/814 (61.3%) | 28.64/41.45 GB | 29.3 MB/s | ETA: 7 min | Current: chb15
+[2026-07-15 13:25:28]   Progress: 500/814 (61.4%) | 28.71/41.45 GB | 29.3 MB/s | ETA: 7 min | Current: chb15
+[2026-07-15 13:26:00]   Progress: 514/814 (63.1%) | 29.29/41.45 GB | 29.0 MB/s | ETA: 7 min | Current: chb15
+[2026-07-15 13:26:11]   Progress: 520/814 (63.9%) | 29.56/41.45 GB | 28.9 MB/s | ETA: 7 min | Current: chb15
+[2026-07-15 13:26:46]   Progress: 533/814 (65.5%) | 30.22/41.45 GB | 28.6 MB/s | ETA: 7 min | Current: chb16
+[2026-07-15 13:26:55]   Progress: 540/814 (66.3%) | 30.48/41.45 GB | 28.6 MB/s | ETA: 7 min | Current: chb16
+[2026-07-15 13:27:28]   Progress: 558/814 (68.6%) | 31.05/41.45 GB | 28.3 MB/s | ETA: 6 min | Current: chb17
+[2026-07-15 13:27:35]   Progress: 560/814 (68.8%) | 31.13/41.45 GB | 28.2 MB/s | ETA: 6 min | Current: chb17
+[2026-07-15 13:28:10]   Progress: 576/814 (70.8%) | 31.85/41.45 GB | 28.0 MB/s | ETA: 6 min | Current: chb17
+[2026-07-15 13:28:15]   Progress: 580/814 (71.3%) | 32.03/41.45 GB | 28.0 MB/s | ETA: 6 min | Current: chb18
+[2026-07-15 13:28:48]   Progress: 589/814 (72.4%) | 32.46/41.45 GB | 27.6 MB/s | ETA: 6 min | Current: chb18
+[2026-07-15 13:29:11]   Progress: 600/814 (73.7%) | 32.94/41.45 GB | 27.5 MB/s | ETA: 5 min | Current: chb18
+[2026-07-15 13:29:52]   Progress: 619/814 (76.0%) | 33.55/41.45 GB | 27.1 MB/s | ETA: 5 min | Current: chb18
+[2026-07-15 13:29:56]   Progress: 620/814 (76.2%) | 33.59/41.45 GB | 27.0 MB/s | ETA: 5 min | Current: chb19
+[2026-07-15 13:30:39]   Progress: 632/814 (77.6%) | 34.16/41.45 GB | 26.6 MB/s | ETA: 5 min | Current: chb19
+[2026-07-15 13:30:48]   Progress: 640/814 (78.6%) | 34.54/41.45 GB | 26.7 MB/s | ETA: 4 min | Current: chb19
+[2026-07-15 13:31:19]   Progress: 653/814 (80.2%) | 34.98/41.45 GB | 26.4 MB/s | ETA: 4 min | Current: chb19
+[2026-07-15 13:31:33]   Progress: 660/814 (81.1%) | 35.26/41.45 GB | 26.4 MB/s | ETA: 4 min | Current: chb20
+[2026-07-15 13:32:04]   Progress: 672/814 (82.6%) | 35.65/41.45 GB | 26.1 MB/s | ETA: 4 min | Current: chb20
+[2026-07-15 13:32:29]   Progress: 680/814 (83.5%) | 35.98/41.45 GB | 25.9 MB/s | ETA: 4 min | Current: chb20
+[2026-07-15 13:32:59]   Progress: 695/814 (85.4%) | 36.59/41.45 GB | 25.8 MB/s | ETA: 3 min | Current: chb21
+[2026-07-15 13:33:17]   Progress: 700/814 (86.0%) | 36.83/41.45 GB | 25.6 MB/s | ETA: 3 min | Current: chb21
+[2026-07-15 13:33:49]   Progress: 715/814 (87.8%) | 37.35/41.45 GB | 25.4 MB/s | ETA: 3 min | Current: chb21
+[2026-07-15 13:34:00]   Progress: 720/814 (88.5%) | 37.59/41.45 GB | 25.4 MB/s | ETA: 3 min | Current: chb21
+[2026-07-15 13:34:30]   Progress: 731/814 (89.8%) | 38.07/41.45 GB | 25.2 MB/s | ETA: 2 min | Current: chb21
+[2026-07-15 13:34:50]   Progress: 740/814 (90.9%) | 38.46/41.45 GB | 25.2 MB/s | ETA: 2 min | Current: chb22
+[2026-07-15 13:35:22]   Progress: 753/814 (92.5%) | 39.03/41.45 GB | 25.0 MB/s | ETA: 2 min | Current: chb22
+[2026-07-15 13:35:40]   Progress: 760/814 (93.4%) | 39.18/41.45 GB | 24.8 MB/s | ETA: 2 min | Current: chb23
+[2026-07-15 13:36:15]   Progress: 774/814 (95.1%) | 39.79/41.45 GB | 24.7 MB/s | ETA: 1 min | Current: chb24
+[2026-07-15 13:36:41]   Progress: 780/814 (95.8%) | 39.98/41.45 GB | 24.4 MB/s | ETA: 1 min | Current: chb24
+[2026-07-15 13:37:13]   Progress: 799/814 (98.2%) | 40.97/41.45 GB | 24.5 MB/s | ETA: 0 min | Current: chb24
+[2026-07-15 13:37:15]   Progress: 800/814 (98.3%) | 41.01/41.45 GB | 24.5 MB/s | ETA: 0 min | Current: chb24
+[2026-07-15 13:37:47]   Progress: 813/814 (99.9%) | 41.41/41.45 GB | 24.3 MB/s | ETA: 0 min | Current: chb24
+[2026-07-15 13:37:49] === Download Complete ===
+[2026-07-15 13:37:49] Time: 29.1 minutes
+[2026-07-15 13:37:49] Downloaded: 814 files (41.45 GB)
+[2026-07-15 13:37:49] Previously existed: 5
+[2026-07-15 13:37:49] Failed: 0
+[2026-07-15 13:37:49] 
+[2026-07-15 13:37:49] --- Per-Patient Summary ---
+[2026-07-15 13:37:49]   chb01: 42 .edf files, 1.60 GB
+[2026-07-15 13:37:49]   chb02: 36 .edf files, 1.39 GB
+[2026-07-15 13:37:49]   chb03: 38 .edf files, 1.50 GB
+[2026-07-15 13:37:49]   chb04: 42 .edf files, 6.39 GB
+[2026-07-15 13:37:49]   chb05: 39 .edf files, 1.54 GB
+[2026-07-15 13:37:49]   chb06: 18 .edf files, 2.63 GB
+[2026-07-15 13:37:49]   chb07: 19 .edf files, 2.65 GB
+[2026-07-15 13:37:49]   chb08: 20 .edf files, 0.79 GB
+[2026-07-15 13:37:49]   chb09: 19 .edf files, 2.79 GB
+[2026-07-15 13:37:49]   chb10: 25 .edf files, 1.98 GB
+[2026-07-15 13:37:49]   chb11: 35 .edf files, 1.66 GB
+[2026-07-15 13:37:49]   chb13: 33 .edf files, 1.36 GB
+[2026-07-15 13:37:49]   chb14: 26 .edf files, 1.25 GB
+[2026-07-15 13:37:49]   chb15: 40 .edf files, 2.60 GB
+[2026-07-15 13:37:49]   chb16: 19 .edf files, 0.89 GB
+[2026-07-15 13:37:49]   chb17: 21 .edf files, 1.00 GB
+[2026-07-15 13:37:49]   chb18: 36 .edf files, 1.70 GB
+[2026-07-15 13:37:49]   chb19: 30 .edf files, 1.43 GB
+[2026-07-15 13:37:49]   chb20: 29 .edf files, 1.33 GB
+[2026-07-15 13:37:49]   chb21: 33 .edf files, 1.58 GB
+[2026-07-15 13:37:49]   chb22: 31 .edf files, 1.49 GB
+[2026-07-15 13:37:49]   chb23: 9 .edf files, 1.05 GB
+[2026-07-15 13:37:49]   chb24: 22 .edf files, 0.84 GB
+[2026-07-15 13:37:49] 
+Total dataset size: 41.45 GB
+[2026-07-15 13:37:49] =========================

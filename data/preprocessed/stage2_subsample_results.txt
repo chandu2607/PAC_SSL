@@ -1,0 +1,10 @@
+Subsample_Patients: ['chb01', 'chb02']
+Subsample_Windows: 35295
+Train_Loss: 0.1387
+Train_Acc: 94.97
+Val_Loss: 0.1139
+Val_Acc: 96.73
+Train_Time_Sec: 36.28
+Val_Time_Sec: 3.60
+Est_Full_Epoch_Time_Sec: 433.65
+Total_Params: 366113

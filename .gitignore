@@ -1,0 +1,18 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Large datasets & preprocessed segments
+data/chb-mit/
+data/preprocessed/*.h5
+data/preprocessed/npy/
+
+# Temporary / OS files
+.DS_Store
+Thumbs.db

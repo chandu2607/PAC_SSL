@@ -1,0 +1,29 @@
+[2026-07-15 13:53:36] === Starting Fast Parallel Stage 1 Preprocessing (8 workers) across 23 Subjects ===
+[2026-07-15 13:56:21] Completed chb08 (20 files) in 160.3s | Preictal (4s, 50% ovl): 2001 | Interictal: 0
+[2026-07-15 14:01:21] Completed chb01 (42 files) in 460.6s | Preictal (4s, 50% ovl): 627 | Interictal: 12600
+[2026-07-15 14:01:27] Completed chb05 (39 files) in 466.2s | Preictal (4s, 50% ovl): 854 | Interictal: 12602
+[2026-07-15 14:02:13] Completed chb02 (36 files) in 512.0s | Preictal (4s, 50% ovl): 1368 | Interictal: 20700
+[2026-07-15 14:02:38] Completed chb03 (38 files) in 537.2s | Preictal (4s, 50% ovl): 665 | Interictal: 18901
+[2026-07-15 14:06:21] Completed chb06 (18 files) in 760.1s | Preictal (4s, 50% ovl): 18398 | Interictal: 0
+[2026-07-15 14:07:10] Completed chb14 (26 files) in 271.5s | Preictal (4s, 50% ovl): 1904 | Interictal: 1800
+[2026-07-15 14:07:28] Completed chb07 (19 files) in 826.9s | Preictal (4s, 50% ovl): 4999 | Interictal: 20397
+[2026-07-15 14:07:58] Completed chb09 (19 files) in 696.7s | Preictal (4s, 50% ovl): 5021 | Interictal: 9208
+[2026-07-15 14:09:01] Completed chb13 (33 files) in 407.7s | Preictal (4s, 50% ovl): 1989 | Interictal: 10800
+[2026-07-15 14:10:23] Completed chb16 (19 files) in 193.7s | Preictal (4s, 50% ovl): 1247 | Interictal: 4500
+[2026-07-15 14:10:59] Completed chb10 (25 files) in 577.3s | Preictal (4s, 50% ovl): 8104 | Interictal: 7205
+[2026-07-15 14:10:59] Completed chb11 (35 files) in 571.8s | Preictal (4s, 50% ovl): 446 | Interictal: 25199
+[2026-07-15 14:11:16] Completed chb17 (21 files) in 227.8s | Preictal (4s, 50% ovl): 1518 | Interictal: 6300
+[2026-07-15 14:12:39] Completed chb15 (40 files) in 377.6s | Preictal (4s, 50% ovl): 2890 | Interictal: 900
+[2026-07-15 14:16:12] Completed chb20 (29 files) in 348.5s | Preictal (4s, 50% ovl): 644 | Interictal: 9901
+[2026-07-15 14:16:51] Completed chb24 (22 files) in 252.6s | Preictal (4s, 50% ovl): 3905 | Interictal: 900
+[2026-07-15 14:17:16] Completed chb18 (36 files) in 557.7s | Preictal (4s, 50% ovl): 1229 | Interictal: 21602
+[2026-07-15 14:17:40] Completed chb19 (30 files) in 519.2s | Preictal (4s, 50% ovl): 1259 | Interictal: 20700
+[2026-07-15 14:17:50] Completed chb22 (31 files) in 411.2s | Preictal (4s, 50% ovl): 1450 | Interictal: 10802
+[2026-07-15 14:17:57] Completed chb23 (9 files) in 401.6s | Preictal (4s, 50% ovl): 11063 | Interictal: 1252
+[2026-07-15 14:19:20] Completed chb21 (33 files) in 501.4s | Preictal (4s, 50% ovl): 887 | Interictal: 18900
+[2026-07-15 14:27:11] Completed chb04 (42 files) in 2010.4s | Preictal (4s, 50% ovl): 6011 | Interictal: 70171
+[2026-07-15 14:27:13] 
+=== Stage 1 Summary Across 23 Subjects (Total time: 33.6 min) ===
+[2026-07-15 14:27:13] Total Preictal Windows (4s, 50% overlap): 78479
+[2026-07-15 14:27:13] Total Interictal Windows (4s, 0% overlap): 305340
+[2026-07-15 14:27:13] Saved counts to data\preprocessed\stage1_counts.txt
