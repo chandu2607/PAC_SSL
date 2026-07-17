@@ -162,9 +162,11 @@ def extract_and_cache_encoder_features(encoder, feature_extractor, device, patie
     return features_dict
 
 
-def train_classifier_head_on_fold(X_train, y_train, device, epochs=15, batch_size=256, lr=1e-3):
+def train_classifier_head_on_fold(X_train, y_train, device, epochs=15, batch_size=256, lr=1e-3, d_model=None):
     """Trains a fresh SeizureClassifierHead on the balanced training embeddings of 22 subjects."""
-    head = SeizureClassifierHead(d_model=128).to(device)
+    if d_model is None:
+        d_model = X_train.shape[1]
+    head = SeizureClassifierHead(d_model=d_model).to(device)
     optimizer = torch.optim.AdamW(head.parameters(), lr=lr, weight_decay=1e-4)
     criterion = nn.BCEWithLogitsLoss()
     

@@ -16,9 +16,9 @@ class PACFeatureExtractor(nn.Module):
     """
     Extracts Hilbert-based Phase-Amplitude Coupling (PAC) representations directly on GPU using FFT.
     Given raw/filtered EEG window `x` of shape (B, C, T) where T=1024, fs=256 Hz:
-      - Theta Phase (4-8 Hz): analytic signal via frequency masking [4, 8] Hz -> angle -> cos & sin.
-      - Gamma Amplitude (30-80 Hz): analytic signal via frequency masking [30, 80] Hz -> magnitude.
-    Returns stacked representation of shape (B, C, 4, T) = [x, cos_phi_theta, sin_phi_theta, amp_gamma].
+      - Theta Phase (4-8 Hz): analytic signal via frequency masking [4, 8] Hz -> angle -> theta_phase.
+      - Gamma Amplitude (30-80 Hz): analytic signal via frequency masking [30, 80] Hz -> magnitude -> gamma_amplitude.
+    Returns stacked 2-channel representation z-scored per segment: shape (B, C, 2, T) = [theta_phase_z, amp_gamma_z].
     """
     def __init__(self, fs=256, n_samples=1024):
         super().__init__()
@@ -37,15 +37,6 @@ class PACFeatureExtractor(nn.Module):
 
     def forward(self, x):
         # x shape: (B, C, T)
-        X_fft = torch.fft.rfft(x, dim=-1) # (B, C, 513)
-        
-        # Analytic signal for Theta
-        # For real signal, analytic signal in freq domain has positive freqs doubled, negative zeroed.
-        # rfft only stores non-negative frequencies, so we multiply non-DC/non-Nyquist by 2.
-        X_theta = X_fft * self.theta_mask * 2.0
-        z_theta = torch.fft.irfft(X_theta, n=self.n_samples, dim=-1) # complex not required since irfft returns real projection if we don't use ifft
-        # To get true complex analytic signal in time domain, use torch.fft.ifft on full spectrum or construct complex:
-        # Using full FFT:
         X_full = torch.fft.fft(x, dim=-1) # (B, C, T)
         freqs_full = torch.fft.fftfreq(self.n_samples, d=1.0/self.fs).to(x.device)
         
@@ -58,14 +49,16 @@ class PACFeatureExtractor(nn.Module):
         
         # Instantaneous Phase of Theta: angle of z_theta_complex
         phi_theta = torch.angle(z_theta_complex)
-        cos_phi = torch.cos(phi_theta)
-        sin_phi = torch.sin(phi_theta)
         
         # Instantaneous Envelope of Gamma: magnitude of z_gamma_complex
         amp_gamma = torch.abs(z_gamma_complex)
         
-        # Stack features: (B, C, 4, T)
-        features = torch.stack([x, cos_phi, sin_phi, amp_gamma], dim=2)
+        # Z-score normalize each feature per segment along time dimension (dim=-1)
+        phi_theta_z = (phi_theta - phi_theta.mean(dim=-1, keepdim=True)) / (phi_theta.std(dim=-1, keepdim=True) + 1e-6)
+        amp_gamma_z = (amp_gamma - amp_gamma.mean(dim=-1, keepdim=True)) / (amp_gamma.std(dim=-1, keepdim=True) + 1e-6)
+        
+        # Stack features: (B, C, 2, T) = [phi_theta_z, amp_gamma_z]
+        features = torch.stack([phi_theta_z, amp_gamma_z], dim=2)
         return features
 
 
@@ -77,7 +70,7 @@ class DualKernelCNNFrontEnd(nn.Module):
       - K1 = 33 (~130 ms at 256Hz) for capturing slow theta dynamics & phase modulations.
       - K2 = 7 (~27 ms at 256Hz) for capturing fast gamma bursts & local envelope changes.
     """
-    def __init__(self, in_features=4, out_channels=32):
+    def __init__(self, in_features=3, out_channels=32):
         super().__init__()
         # Branch 1: Large kernel (K=33)
         self.branch1 = nn.Sequential(
@@ -204,20 +197,48 @@ class TemporalTransformerEncoder(nn.Module):
 
 class PACSSLEncoder(nn.Module):
     """
-    Full PAC-SSL Self-Supervised Encoder (Stages 1 -> 2 -> 3 exactly in order).
+    Reverted simpler, previously validated 3-layer 1D CNN encoder.
+    Takes the standard 2-channel input (theta_phase, gamma_amplitude concatenated across the channel dimension, z-scored per segment).
+    3-layer 1D CNN: Conv1d -> BatchNorm1d -> ReLU -> stride-2 downsampling -> AdaptiveAvgPool1d at the end.
     """
-    def __init__(self, fs=256, n_samples=1024, num_channels=18, cnn_out=32, d_model=128):
+    def __init__(self, fs=256, n_samples=1024, num_channels=18, cnn_out=64, d_model=128, **kwargs):
         super().__init__()
+        self.fs = fs
+        self.n_samples = n_samples
+        self.num_channels = num_channels
+        self.d_model = d_model
         self.feature_extractor = PACFeatureExtractor(fs=fs, n_samples=n_samples)
-        self.stage1_cnn = DualKernelCNNFrontEnd(in_features=4, out_channels=cnn_out)
-        self.stage2_gcn = LearnableAdjacencyGCN(num_channels=num_channels, embed_dim=16, feature_dim=cnn_out)
-        self.stage3_transformer = TemporalTransformerEncoder(num_channels=num_channels, in_dim=cnn_out, d_model=d_model)
+        
+        in_channels = num_channels * 2 # 18 * 2 = 36
+        
+        # 3-layer 1D CNN with stride-2 downsampling
+        self.conv1 = nn.Sequential(
+            nn.Conv1d(in_channels, 64, kernel_size=15, stride=2, padding=7, bias=False),
+            nn.BatchNorm1d(64),
+            nn.ReLU(inplace=True)
+        )
+        self.conv2 = nn.Sequential(
+            nn.Conv1d(64, 128, kernel_size=7, stride=2, padding=3, bias=False),
+            nn.BatchNorm1d(128),
+            nn.ReLU(inplace=True)
+        )
+        self.conv3 = nn.Sequential(
+            nn.Conv1d(128, d_model, kernel_size=5, stride=2, padding=2, bias=False),
+            nn.BatchNorm1d(d_model),
+            nn.ReLU(inplace=True)
+        )
+        self.pool = nn.AdaptiveAvgPool1d(1)
 
     def forward_from_features(self, features):
-        """Forward pass starting from pre-extracted 4-channel PAC features (B, C, 4, T)."""
-        h_cnn = self.stage1_cnn(features)       # Stage 1: (B, C, D, T')
-        h_gcn = self.stage2_gcn(h_cnn)          # Stage 2: (B, C, D, T')
-        z = self.stage3_transformer(h_gcn)      # Stage 3: (B, d_model)
+        # features shape: (B, C, 2, T) e.g. (B, 18, 2, 1024)
+        B, C, F_in, T = features.shape
+        x_flat = features.view(B, C * F_in, T) # (B, 36, T)
+        
+        h1 = self.conv1(x_flat) # (B, 64, T//2)
+        h2 = self.conv2(h1)     # (B, 128, T//4)
+        h3 = self.conv3(h2)     # (B, d_model=128, T//8)
+        
+        z = self.pool(h3).squeeze(-1) # (B, d_model=128)
         return z
 
     def forward(self, x):
@@ -243,7 +264,7 @@ class PACSSLPretextModel(nn.Module):
         )
 
     def forward(self, features):
-        # features: (B, C, 4, T) = [x, cos_phi, sin_phi, amp_gamma]
+        # features: (B, C, 2, T) = [phi_theta_z, amp_gamma_z]
         z = self.encoder.forward_from_features(features) # (B, d_model)
         logits = self.classifier(z).squeeze(-1)          # (B,)
         return logits

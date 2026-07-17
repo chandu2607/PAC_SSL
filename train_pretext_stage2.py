@@ -78,11 +78,11 @@ class MmapPreprocessedEEGDataset(Dataset):
 
 def generate_pac_couplings_on_gpu(features, device):
     """
-    Given batch of PAC features of shape (B, 18, 4, 1024) = [x, cos_phi, sin_phi, amp_gamma]:
+    Given batch of PAC features of shape (B, 18, 3, 1024) = [cos_phi, sin_phi, amp_gamma]:
       - Genuine (label=1): keep exact features (same segment phase & amplitude).
       - Swapped (label=0): pair (cos_phi, sin_phi) from segment i with amp_gamma from randomly different segment j in batch.
     Returns:
-      features_combined: (2*B, 18, 4, 1024)
+      features_combined: (2*B, 18, 3, 1024)
       labels_combined: (2*B,) float tensor (1.0 for genuine, 0.0 for swapped)
     """
     B, C, F_in, T = features.shape
@@ -100,11 +100,10 @@ def generate_pac_couplings_on_gpu(features, device):
     else:
         perm = torch.zeros(1, dtype=torch.long, device=device)
         
-    x_part = features[:, :, 0:1, :]       # (B, 18, 1, 1024)
-    phi_part = features[:, :, 1:3, :]     # (B, 18, 2, 1024)
-    amp_part = features[perm, :, 3:4, :]  # (B, 18, 1, 1024)
+    phi_part = features[:, :, 0:F_in-1, :]     # (B, 18, F_in-1, 1024) e.g. [theta_phase_z] when F_in=2
+    amp_part = features[perm, :, F_in-1:F_in, :] # (B, 18, 1, 1024)      e.g. [amp_gamma_z] when F_in=2
     
-    features_swapped = torch.cat([x_part, phi_part, amp_part], dim=2)
+    features_swapped = torch.cat([phi_part, amp_part], dim=2)
     labels_swapped = torch.zeros(B, dtype=torch.float32, device=device)
     
     features_combined = torch.cat([features_genuine, features_swapped], dim=0)
