@@ -16,3 +16,12 @@ data/preprocessed/npy/
 # Temporary / OS files
 .DS_Store
 Thumbs.db
+
+# IEEE Research Paper and Draft files (EXCLUDED from GitHub per user request)
+IEEE_PAC_SSL_Research_Paper.tex
+IEEE_PAC_SSL_Research_Paper_Draft.md
+IEEE_*.pdf
+*.aux
+*.log
+*.out
+
