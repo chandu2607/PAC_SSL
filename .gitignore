@@ -12,6 +12,7 @@ env/
 data/chb-mit/
 data/preprocessed/*.h5
 data/preprocessed/npy/
+data/preprocessed/*.pt
 
 # Temporary / OS files
 .DS_Store
